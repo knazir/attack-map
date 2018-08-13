@@ -2,6 +2,7 @@
   "name": "attack-map",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "d3-scale": "^2.1.0",
     "react": "^16.4.2",
