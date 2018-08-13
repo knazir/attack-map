@@ -48,21 +48,21 @@ class AttackMap extends Component {
     const attackCounts = {};
     data.attacks.forEach(attack => {
       const attacker = attack.attacker;
-      const location = [attacker.location.latitude, attacker.location.longitude];
+      const location = [attacker.location.longitude, attacker.location.latitude];
       location in attackCounts ? attackCounts[location]++ : attackCounts[location] = 1;
     });
 
     attackScale = scaleLinear()
-      .domain([0, Math.max.apply(null, Object.values(attackCounts))])
+      .domain([1, 255])
       .range([1, 255]);
 
     const attacks = data.attacks.map(attack => {
       const { ip, attacker } = attack;
-      const location = [attacker.location.latitude, attacker.location.longitude];
+      const location = [attacker.location.longitude, attacker.location.latitude];
       return {
         name: ip,
         coordinates: location,
-        weight: attackCounts[location]
+        weight: 10
       };
     });
 
